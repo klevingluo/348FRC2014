@@ -36,7 +36,7 @@ public abstract class LauncherCommandBase extends CommandBase {
         {1},
         {2},
         {3,7},
-        {2,4,7},
+        {2,4},
         {5,8},
         {6,8},
         {1},
@@ -54,7 +54,7 @@ public abstract class LauncherCommandBase extends CommandBase {
      * @return true if successful, false if failed
      */
     protected boolean enterState(int i) {
-        for(int j=0; j < VALID_TRANSITIONS[i].length; j++) {
+        for(int j=0; j < VALID_TRANSITIONS[state].length; j++) {
             if(i == VALID_TRANSITIONS[state][j])
                 break;
             return false;
@@ -64,5 +64,29 @@ public abstract class LauncherCommandBase extends CommandBase {
         launcher.setLock(STATES[i][2]);
         launcher.setLatch(STATES[i][3]);
         return true;
+    }
+    
+    public String stateDescribe(int i) {
+        if (i == 0) {
+            return "init";
+        } else if (i == 1) {
+            return "evacuating launcher";
+        } else if (i == 2) {
+            return "launcher at rest";
+        } else if (i == 3) {
+            return "latched";
+        } else if (i == 4) {
+            return "charging";
+        } else if (i == 5) {
+            return "charged";
+        } else if (i == 6) {
+            return "firing";
+        } else if (i == 7) {
+            return "launcher at rest, unlatched";
+        } else if (i == 8) {
+            return "aborting";
+        } else {
+            return "error";
+        }
     }
 }

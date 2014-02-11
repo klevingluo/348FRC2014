@@ -29,14 +29,15 @@ public class OI {
     public JoystickButton lower = new JoystickButton(leftStick, 2);
     // turns the compressor on/off
     public JoystickButton toggle = new JoystickButton(rightStick, 11);
-    // advances the launcher through the steps of shooting (see documentation)
-    public JoystickButton advance = new JoystickButton(leftStick, 8);
     // enters normal controll mode
     public JoystickButton normalControl = new JoystickButton(leftStick, 6);
     // enters autonomous test mode
     public JoystickButton test = new JoystickButton(leftStick,7);
     // enters launcher diagnostic mode
     public JoystickButton shooterTest = new JoystickButton(leftStick, 11);
+    
+    public JoystickButton advance = new JoystickButton(rightStick, 3);
+    public JoystickButton stop = new JoystickButton(rightStick, 2);
     
     public void run() {
         test.whenPressed(new AutoShoot());
@@ -45,6 +46,8 @@ public class OI {
         toggle.whenPressed(null);
         reverseDrive.whenActive(new ReverseTankDrive());
         reverseDrive.whenInactive(new TankDrive());
+        
+        
     }
 }
 

@@ -55,10 +55,6 @@ public class RobotMap {
     
     // diagnostic values
     public static void init() {
-        SmartDashboard.putNumber("shooting pressure", pressureSensor.getVoltage());
-        SmartDashboard.putBoolean("compressor status:", CommandBase.compressor.isOn());
-        SmartDashboard.putBoolean("pressure switch", pressureSwitch.get());
-        
         LiveWindow.addActuator("Raiser", "pid", CommandBase.raiser.getPIDController());
         LiveWindow.addSensor("Raiser", "Angle", CommandBase.raiser.armAngle);
     }

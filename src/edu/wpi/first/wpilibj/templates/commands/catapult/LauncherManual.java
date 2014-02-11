@@ -5,6 +5,7 @@
 package edu.wpi.first.wpilibj.templates.commands.catapult;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
  *
@@ -22,7 +23,6 @@ public class LauncherManual extends LauncherCommandBase {
     }
 
     protected void execute() {
-        SmartDashboard.putString("", null);
         if (oi.advance.get() && refreshed == true) {
             if (state == 0) {
                 enterState(1);
@@ -39,13 +39,15 @@ public class LauncherManual extends LauncherCommandBase {
             } else if (state == 6) {
                 enterState(1);
             }
-            
             refreshed = false;
         }
         
         if (!oi.advance.get()) {
             refreshed = true;
         }
+        
+        SmartDashboard.putString("launcher state:", stateDescribe(state));
+        SmartDashboard.putNumber("shooting pressure:", RobotMap.pressureSensor.getVoltage());
     }
 
     protected boolean isFinished() {
