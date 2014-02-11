@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.templates.commands.AutoCompress;
+import edu.wpi.first.wpilibj.templates.commands.AutoCompress;
 
 /**
  *
@@ -16,9 +18,25 @@ import edu.wpi.first.wpilibj.DigitalInput;
 public class Compressor extends Subsystem {
     
     Relay compressor = RobotMap.compressor;
-    DigitalInput switchy = RobotMap.pressureSwitch;
-            
-    private boolean active = false;
+    DigitalInput switcher = RobotMap.pressureSwitch;
+    
+    boolean active = true;
+    
+    public void on() {
+        compressor.set(Relay.Value.kForward);
+    }
+    
+    public void off() {
+        compressor.set(Relay.Value.kOff);
+    }
+    
+    public boolean getSwitch() {
+        return switcher.get();
+    }
+    
+    public boolean isOn() {
+        return active;
+    }
     
     public void start() {
         active = true;
@@ -27,20 +45,9 @@ public class Compressor extends Subsystem {
     public void stop() {
         active = false;
     }
-    
-    public boolean isOn() {
-        return active;
-    }
-    
-    public void update() {
-        if (active && switchy.get()) {
-            compressor.set(Relay.Value.kForward);
-        } else {
-            compressor.set(Relay.Value.kOff);
-        }
-    }
 
     protected void initDefaultCommand() {
+        setDefaultCommand(new AutoCompress());
     }
     
 }

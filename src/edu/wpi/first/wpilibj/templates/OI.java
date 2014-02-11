@@ -19,31 +19,22 @@ public class OI {
     
     // when pressed, the robot drives backwards
     public JoystickButton reverseDrive = new JoystickButton(leftStick, 1);
-    
     // rolls the intake rollers 
     public JoystickButton roll = new JoystickButton(leftStick, 5);
-    
     // rolls the intake rollers backwards
     public JoystickButton rollReverse = new JoystickButton(leftStick, 4);
-    
     // raises the arms
     public JoystickButton raise = new JoystickButton(leftStick, 3);
-    
     // lowers the arms
     public JoystickButton lower = new JoystickButton(leftStick, 2);
-    
     // turns the compressor on/off
     public JoystickButton toggle = new JoystickButton(rightStick, 11);
-    
     // advances the launcher through the steps of shooting (see documentation)
     public JoystickButton advance = new JoystickButton(leftStick, 8);
-
     // enters normal controll mode
     public JoystickButton normalControl = new JoystickButton(leftStick, 6);
-    
     // enters autonomous test mode
     public JoystickButton test = new JoystickButton(leftStick,7);
-    
     // enters launcher diagnostic mode
     public JoystickButton shooterTest = new JoystickButton(leftStick, 11);
     
@@ -51,7 +42,9 @@ public class OI {
         test.whenPressed(new AutoShoot());
         normalControl.whenPressed(new teleopDefault());
         shooterTest.whenPressed(new ShootTest());
-        toggle.whenPressed(new ToggleCompressor());
+        toggle.whenPressed(null);
+        reverseDrive.whenActive(new ReverseTankDrive());
+        reverseDrive.whenInactive(new TankDrive());
     }
 }
 

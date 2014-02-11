@@ -8,21 +8,22 @@ package edu.wpi.first.wpilibj.templates.commands;
  *
  * @author kluo
  */
-public class ToggleCompressor extends CommandBase {
+public class AutoCompress extends CommandBase {
 
     protected void initialize() {
-        if (compressor.isOn()) {
-            compressor.stop();
-        } else {
-            compressor.start();
-        }
+        requires(compressor);
     }
 
     protected void execute() {
+        if (compressor.getSwitch() && compressor.isOn()) {
+            compressor.on();
+        } else {
+            compressor.off();
+        }
     }
 
     protected boolean isFinished() {
-        return !oi.toggle.get();
+        return false;
     }
 
     protected void end() {

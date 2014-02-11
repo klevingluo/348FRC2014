@@ -13,8 +13,6 @@ import edu.wpi.first.wpilibj.Joystick;
 public class ReverseTankDrive extends CommandBase {
 
     public ReverseTankDrive() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
         requires(driveTrain);
     }
 
@@ -24,8 +22,8 @@ public class ReverseTankDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to srun
     protected void execute() {
-        driveTrain.driveLeft(-oi.rightStick.getAxis(Joystick.AxisType.kY));
-        driveTrain.driveRight(-oi.leftStick.getAxis(Joystick.AxisType.kY));
+        driveTrain.driveLeft(oi.rightStick.getAxis(Joystick.AxisType.kY));
+        driveTrain.driveRight(oi.leftStick.getAxis(Joystick.AxisType.kY));
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -35,7 +33,7 @@ public class ReverseTankDrive extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        new TankDrive();
+
     }
 
     // Called when another command which requires one or more of the same

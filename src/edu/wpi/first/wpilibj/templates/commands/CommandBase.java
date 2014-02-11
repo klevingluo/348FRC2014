@@ -1,8 +1,8 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.subsystems.Compressor;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.templates.OI;
-import edu.wpi.first.wpilibj.templates.subsystems.Compressor;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.subsystems.Raiser;
 import edu.wpi.first.wpilibj.templates.subsystems.Roller;

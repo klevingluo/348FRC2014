@@ -42,7 +42,6 @@ public class RobotTemplate extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
         //autonomousCommand.start();
-        CommandBase.compressor.start();
     }
 
     /**
@@ -50,7 +49,6 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
-        CommandBase.compressor.update();
     }
 
     public void teleopInit() {
@@ -67,7 +65,6 @@ public class RobotTemplate extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         CommandBase.oi.run();
-        CommandBase.compressor.update();
     }
     
     

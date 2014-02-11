@@ -23,18 +23,18 @@ public class TankDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to srun
     protected void execute() {
-        driveTrain.driveLeft(oi.leftStick.getAxis(Joystick.AxisType.kY));
-        driveTrain.driveRight(oi.rightStick.getAxis(Joystick.AxisType.kY));
+        driveTrain.driveLeft(-oi.leftStick.getAxis(Joystick.AxisType.kY));
+        driveTrain.driveRight(-oi.rightStick.getAxis(Joystick.AxisType.kY));
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return oi.reverseDrive.get();
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-        new ReverseTankDrive();
+        
     }
 
     // Called when another command which requires one or more of the same
