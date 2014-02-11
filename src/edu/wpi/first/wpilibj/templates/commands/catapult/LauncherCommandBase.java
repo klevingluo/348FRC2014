@@ -55,7 +55,7 @@ public abstract class LauncherCommandBase extends CommandBase {
      */
     protected boolean enterState(int i) {
         for(int j=0; j < VALID_TRANSITIONS[i].length; j++) {
-            if(i == VALID_TRANSITIONS[i][j])
+            if(i == VALID_TRANSITIONS[state][j])
                 break;
             return false;
         }

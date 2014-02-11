@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.templates.RobotMap;
+import edu.wpi.first.wpilibj.templates.commands.catapult.LauncherManual;
 
 
 /**
@@ -56,6 +57,6 @@ public class Launcher extends Subsystem {
     }
             
     public void initDefaultCommand() {
-        
+        setDefaultCommand(new LauncherManual());
     }
 }

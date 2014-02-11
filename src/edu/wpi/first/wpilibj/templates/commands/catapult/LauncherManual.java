@@ -4,6 +4,8 @@
  */
 package edu.wpi.first.wpilibj.templates.commands.catapult;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 /**
  *
  * @author kluo
@@ -20,6 +22,7 @@ public class LauncherManual extends LauncherCommandBase {
     }
 
     protected void execute() {
+        SmartDashboard.putString("", null);
         if (oi.advance.get() && refreshed == true) {
             if (state == 0) {
                 enterState(1);
