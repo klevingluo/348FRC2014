@@ -25,7 +25,7 @@ public class ShootTest extends LauncherCommandBase {
             if (joy.getRawButton(i) == true)
                 enterState(i);
         }
-        System.out.println("state:" + state + "here:" + VALID_TRANSITIONS[state]);
+        System.out.println("state:" + state + "here:" + TRANSITIONS[state]);
     }
 
     protected boolean isFinished() {

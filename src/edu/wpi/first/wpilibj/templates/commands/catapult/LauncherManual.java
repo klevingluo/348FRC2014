@@ -4,6 +4,7 @@
  */
 package edu.wpi.first.wpilibj.templates.commands.catapult;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
@@ -13,7 +14,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  */
 public class LauncherManual extends LauncherCommandBase {
     
-    private boolean refreshed = false;
+    private Timer time;
     
     public LauncherManual() {
         requires(launcher);
@@ -23,23 +24,40 @@ public class LauncherManual extends LauncherCommandBase {
     }
 
     protected void execute() {
-        if (oi.advance.get() && refreshed == true) {
-            enterState(VALID_TRANSITIONS[state][0]);
-            refreshed = false;
-            SmartDashboard.putString("abort state", stateDescribe(VALID_TRANSITIONS[state][1]));
-            SmartDashboard.putString("launcher state:", stateDescribe(state));
-            SmartDashboard.putString("next state:", stateDescribe(VALID_TRANSITIONS[state][0]));
-        } else if (oi.abort.get()){
-            enterState(VALID_TRANSITIONS[state][1]);
-            refreshed = false;
-            SmartDashboard.putString("abort state", stateDescribe(VALID_TRANSITIONS[state][1]));
-            SmartDashboard.putString("launcher state:", stateDescribe(state));
-            SmartDashboard.putString("next state:", stateDescribe(VALID_TRANSITIONS[state][0]));
+        if (state == 0) {
+            enterState(TRANSITIONS[0][0]);
+            time.start();
+        } else if (state == 1 && time.get() > 1) {
+            enterState(TRANSITIONS[1][0]);
+            time.reset();
+        } else if (state == 2) {
+            if (RobotMap.catapultArm.get()) {
+                enterState(TRANSITIONS[2][0]);           // Transitions is an array of state movements [2][0] is the forwards transition from state 2 and [2][1] is the backwards transition
+            } else if (time.get() > 3) {
+                enterState(TRANSITIONS[2][1]);
+            }
+            time.reset();
+        } else if (state == 3) {
+            enterState(TRANSITIONS[3][0]);
+            time.reset();
+        } else if (state == 4 && oi.advance.get()) {
+            enterState(TRANSITIONS[4][0]);
+            time.reset();
+        } else if (state == 5 && oi.advance.get()) {
+            enterState(TRANSITIONS[5][0]);
+            time.reset();
+        } else if (state == 6 && time.get() > 0.2) {
+            enterState(TRANSITIONS[6][0]);
+            time.reset();
+        } else if (state == 7 && time.get() > 0.4) {
+            enterState(TRANSITIONS[7][0]);
+            time.reset();
+        } else if (state == 8) {
+            enterState(TRANSITIONS[8][0]);
+            time.reset();
         }
-        System.out.println("" + VALID_TRANSITIONS[state][0] + " " + state + " " + VALID_TRANSITIONS[state][1] + "");
-        if (!oi.advance.get()) {
-            refreshed = true;
-        }
+        
+        System.out.println("" + TRANSITIONS[state][0] + " " + state + " " + TRANSITIONS[state][1] + "");
         SmartDashboard.putNumber("shooting pressure:", RobotMap.pressureSensor.getVoltage());
     }
 
