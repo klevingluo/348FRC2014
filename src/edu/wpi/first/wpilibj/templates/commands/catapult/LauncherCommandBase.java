@@ -33,7 +33,7 @@ public abstract class LauncherCommandBase extends CommandBase {
     /**
      * these are the valid transitions from each state
      */
-    public static final int[][] VALID_TRANSITIONS = {
+    public static final int[][] TRANSITIONS = {
         {1,1},
         {2,1},
         {3,1},
