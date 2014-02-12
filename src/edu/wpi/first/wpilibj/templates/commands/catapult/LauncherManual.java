@@ -21,12 +21,14 @@ public class LauncherManual extends LauncherCommandBase {
     }
 
     protected void initialize() {
+        enterState(4);
+        time.start();
     }
 
     protected void execute() {
         if (state == 0) {
             enterState(TRANSITIONS[0][0]);
-            time.start();
+            time.reset();
         } else if (state == 1 && time.get() > 1) {
             enterState(TRANSITIONS[1][0]);
             time.reset();
@@ -43,10 +45,10 @@ public class LauncherManual extends LauncherCommandBase {
         } else if (state == 4 && oi.advance.get()) {
             enterState(TRANSITIONS[4][0]);
             time.reset();
-        } else if (state == 5 && oi.advance.get()) {
+        } else if (state == 5 && oi.advance.get() && time.get() > 0.2) {
             enterState(TRANSITIONS[5][0]);
             time.reset();
-        } else if (state == 6 && time.get() > 0.2) {
+        } else if (state == 6 && oi.advance.get() && time.get() > 0.2) {
             enterState(TRANSITIONS[6][0]);
             time.reset();
         } else if (state == 7 && time.get() > 0.4) {
@@ -57,6 +59,8 @@ public class LauncherManual extends LauncherCommandBase {
             time.reset();
         }
         
+        SmartDashboard.putString("Launcher state:", stateDescribe(state));
+        SmartDashboard.putString(" next Launcher state:", stateDescribe(TRANSITIONS[state][0]));
         System.out.println("" + TRANSITIONS[state][0] + " " + state + " " + TRANSITIONS[state][1] + "");
         SmartDashboard.putNumber("shooting pressure:", RobotMap.pressureSensor.getVoltage());
     }

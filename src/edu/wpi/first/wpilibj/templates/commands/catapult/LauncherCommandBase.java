@@ -65,17 +65,17 @@ public abstract class LauncherCommandBase extends CommandBase {
         if (i == 0) {
             return "init: 0";
         } else if (i == 1) {
-            return "evacuating launcher: 1";
+            return "evacuating cylinder: 1";
         } else if (i == 2) {
-            return "launcher resetting: 2";
+            return "resetting launcher: 2";
         } else if (i == 3) {
-            return "rest: 3";
+            return "at rest: 3";
         } else if (i == 4) {
-            return "latched: 4";
+            return "latched arm: 4";
         } else if (i == 5) {
-            return "charging: 5";
+            return "charging cylinder: 5";
         } else if (i == 6) {
-            return "locked: 6";
+            return "cylinder locked: 6";
         } else if (i == 7) {
             return "firing: 7";
         } else if (i == 8) {
