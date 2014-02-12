@@ -37,7 +37,7 @@ public class LauncherManual extends LauncherCommandBase {
                 enterState(TRANSITIONS[2][1]);
             }
             time.reset();
-        } else if (state == 3) {
+        } else if (state == 3 && time.get() > 0.1) {
             enterState(TRANSITIONS[3][0]);
             time.reset();
         } else if (state == 4 && oi.advance.get()) {
