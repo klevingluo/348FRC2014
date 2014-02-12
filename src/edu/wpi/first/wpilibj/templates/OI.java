@@ -4,7 +4,6 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.templates.commands.*;
-import edu.wpi.first.wpilibj.templates.commands.catapult.ShootTest;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -28,22 +27,20 @@ public class OI {
     // lowers the arms
     public JoystickButton lower = new JoystickButton(leftStick, 2);
     // turns the compressor on/off
-    public JoystickButton toggle = new JoystickButton(rightStick, 11);
+    public JoystickButton toggle = new JoystickButton(rightStick, 10);
     // enters normal controll mode
     public JoystickButton normalControl = new JoystickButton(leftStick, 6);
     // enters autonomous test mode
     public JoystickButton test = new JoystickButton(leftStick,7);
     // enters launcher diagnostic mode
-    public JoystickButton shooterTest = new JoystickButton(leftStick, 11);
+    public JoystickButton shooterTest = new JoystickButton(leftStick, 10);
     
     public JoystickButton advance = new JoystickButton(rightStick, 3);
-    public JoystickButton stop = new JoystickButton(rightStick, 2);
+    public JoystickButton abort = new JoystickButton(rightStick, 2);
     
     public void run() {
-        test.whenPressed(new AutoShoot());
         normalControl.whenPressed(new teleopDefault());
-        shooterTest.whenPressed(new ShootTest());
-        toggle.whenPressed(null);
+        toggle.whenReleased(new ToggleCompressor());
         reverseDrive.whenActive(new ReverseTankDrive());
         reverseDrive.whenInactive(new TankDrive());
         

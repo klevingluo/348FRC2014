@@ -11,10 +11,10 @@ package edu.wpi.first.wpilibj.templates.commands;
 public class ToggleCompressor extends CommandBase {
 
     protected void initialize() {
-        if (compressor.isOn()) {
-            compressor.stop();
+        if (airCompressor.isOn()) {
+            airCompressor.stop();
         } else {
-            compressor.start();
+            airCompressor.start();
         }
     }
 
@@ -22,7 +22,7 @@ public class ToggleCompressor extends CommandBase {
     }
 
     protected boolean isFinished() {
-        return !oi.toggle.get();
+        return true;
     }
 
     protected void end() {

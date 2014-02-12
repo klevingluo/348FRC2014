@@ -33,13 +33,13 @@ public abstract class LauncherCommandBase extends CommandBase {
      * these are the valid transitions from each state
      */
     public static final int[][] VALID_TRANSITIONS = {
-        {1},
-        {2},
+        {1,1},
+        {2,1},
         {3,7},
-        {2,4},
+        {4,2},
         {5,8},
         {6,8},
-        {1},
+        {1,1},
         {2,3},
         {3,1},
     };
@@ -63,28 +63,29 @@ public abstract class LauncherCommandBase extends CommandBase {
         launcher.setRelease(STATES[i][1]);
         launcher.setLock(STATES[i][2]);
         launcher.setLatch(STATES[i][3]);
+        state = i;
         return true;
     }
     
     public String stateDescribe(int i) {
         if (i == 0) {
-            return "init";
+            return "init: 0";
         } else if (i == 1) {
-            return "evacuating launcher";
+            return "evacuating launcher: 1";
         } else if (i == 2) {
-            return "launcher at rest";
+            return "launcher at rest: 2";
         } else if (i == 3) {
-            return "latched";
+            return "latched: 3";
         } else if (i == 4) {
-            return "charging";
+            return "charging: 4";
         } else if (i == 5) {
-            return "charged";
+            return "charged: 5";
         } else if (i == 6) {
-            return "firing";
+            return "firing: 6";
         } else if (i == 7) {
-            return "launcher at rest, unlatched";
+            return "launcher at rest, unlatched: 7";
         } else if (i == 8) {
-            return "aborting";
+            return "aborting: 8";
         } else {
             return "error";
         }

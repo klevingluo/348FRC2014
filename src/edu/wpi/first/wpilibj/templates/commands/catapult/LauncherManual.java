@@ -16,7 +16,7 @@ public class LauncherManual extends LauncherCommandBase {
     private boolean refreshed = false;
     
     public LauncherManual() {
-        super();
+        requires(launcher);
     }
 
     protected void initialize() {
@@ -24,29 +24,22 @@ public class LauncherManual extends LauncherCommandBase {
 
     protected void execute() {
         if (oi.advance.get() && refreshed == true) {
-            if (state == 0) {
-                enterState(1);
-            } else if (state == 1) {
-                enterState(2);
-            } else if (state == 2) {
-                enterState(3);
-            } else if (state == 3) {
-                enterState(4);
-            } else if (state == 4) {
-                enterState(5);
-            } else if (state == 5) {
-                enterState(6);
-            } else if (state == 6) {
-                enterState(1);
-            }
+            enterState(VALID_TRANSITIONS[state][0]);
             refreshed = false;
+            SmartDashboard.putString("abort state", stateDescribe(VALID_TRANSITIONS[state][1]));
+            SmartDashboard.putString("launcher state:", stateDescribe(state));
+            SmartDashboard.putString("next state:", stateDescribe(VALID_TRANSITIONS[state][0]));
+        } else if (oi.abort.get()){
+            enterState(VALID_TRANSITIONS[state][1]);
+            refreshed = false;
+            SmartDashboard.putString("abort state", stateDescribe(VALID_TRANSITIONS[state][1]));
+            SmartDashboard.putString("launcher state:", stateDescribe(state));
+            SmartDashboard.putString("next state:", stateDescribe(VALID_TRANSITIONS[state][0]));
         }
-        
+        System.out.println("" + VALID_TRANSITIONS[state][0] + " " + state + " " + VALID_TRANSITIONS[state][1] + "");
         if (!oi.advance.get()) {
             refreshed = true;
         }
-        
-        SmartDashboard.putString("launcher state:", stateDescribe(state));
         SmartDashboard.putNumber("shooting pressure:", RobotMap.pressureSensor.getVoltage());
     }
 

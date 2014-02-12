@@ -4,22 +4,29 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 /**
  *
  * @author kluo
  */
 public class AutoCompress extends CommandBase {
 
+    public AutoCompress() {
+        requires(airCompressor);
+    }
     protected void initialize() {
-        requires(compressor);
+
     }
 
     protected void execute() {
-        if (compressor.getSwitch() && compressor.isOn()) {
-            compressor.on();
+        if (airCompressor.getSwitch() && airCompressor.isOn()) {
+            airCompressor.on();
         } else {
-            compressor.off();
+            airCompressor.off();
         }
+        SmartDashboard.putBoolean("compressor status:", airCompressor.isOn());
+        SmartDashboard.putBoolean("pressure switch", airCompressor.getSwitch());
     }
 
     protected boolean isFinished() {

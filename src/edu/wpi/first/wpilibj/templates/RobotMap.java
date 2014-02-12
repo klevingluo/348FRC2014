@@ -29,16 +29,16 @@ public class RobotMap {
     
     // Relays, plug into relay sections on digital sidecar
     public static Relay rightRoller = new Relay(2);
-    public static Relay leftRoller = new Relay(1);
-    public static Relay compressor = new Relay(3);
+    public static Relay leftRoller = new Relay(3);
+    public static Relay compressor = new Relay(1);
     
     // Analog Sensors, plug into analog module
-    public static AnalogPotentiometer raiserAngle = new AnalogPotentiometer(3);
-    public static AnalogChannel pressureSensor = new AnalogChannel(4);
+    public static AnalogPotentiometer raiserAngle = new AnalogPotentiometer(2);
+    public static AnalogChannel pressureSensor = new AnalogChannel(1);
     
     // Digital Sensors, plug into digital io module
-    public static DigitalInput catapultArm = new DigitalInput(2);
-    public static DigitalInput pressureSwitch = new DigitalInput(5);
+    public static DigitalInput catapultArm = new DigitalInput(6);
+    public static DigitalInput pressureSwitch = new DigitalInput(4);
     
     //Solenoid, plug into solenoid modules
     public static Solenoid vacuumA = new Solenoid(1);

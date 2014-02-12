@@ -29,11 +29,11 @@ public class Raiser extends PIDSubsystem {
     }
     
     public void raiseArm() {
-        armRaiser.set(1);
+        armRaiser.set(0.4);
     }
     
     public void lowerArm() {
-        armRaiser.set(-1);
+        armRaiser.set(-0.4);
     }
     
     public void stopArm() {
