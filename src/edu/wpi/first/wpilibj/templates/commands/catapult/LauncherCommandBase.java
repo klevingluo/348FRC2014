@@ -19,15 +19,16 @@ public abstract class LauncherCommandBase extends CommandBase {
      * the solenoids are in this order: vacuum, launcher pressure release, launcher pressure lock, latch
      */
     public static final boolean[][] STATES = { 
-        {false,  false,  false,  false},
-        {false,  true,   true,   false},
-        {true,   true,   true,   false},
-        {false,  false,  true,   false},
-        {false,  false,  true,   true},
-        {false,  false,  false,  true},
-        {false,  false,  true,   true},
-        {false,  false,  true,   false},
-        {false,  true,   true,   true}
+      // vac    release  lock    latch
+        {false,  false,  false,  false}, // init
+        {false,  true,   true,   false}, // evacuating launcher
+        {true,   true,   true,   false}, // vacuum on
+        {false,  false,  true,   false}, // rest
+        {false,  false,  true,   true},  // latched
+        {false,  false,  false,  true},  // charging
+        {false,  false,  true,   true},  // charged
+        {false,  false,  true,   false}, // firing
+        {false,  true,   true,   true}   // aborting
     };
     /**
      * these are the valid transitions from each state
@@ -35,13 +36,13 @@ public abstract class LauncherCommandBase extends CommandBase {
     public static final int[][] VALID_TRANSITIONS = {
         {1,1},
         {2,1},
-        {3,7},
+        {3,1},
         {4,2},
         {5,8},
         {6,8},
-        {1,1},
-        {2,3},
-        {3,1},
+        {7,8},
+        {1,8},
+        {1,3},
     };
             
     public LauncherCommandBase() {
@@ -51,20 +52,13 @@ public abstract class LauncherCommandBase extends CommandBase {
     /**
      * 
      * @param i the state to enter
-     * @return true if successful, false if failed
      */
-    protected boolean enterState(int i) {
-        for(int j=0; j < VALID_TRANSITIONS[state].length; j++) {
-            if(i == VALID_TRANSITIONS[state][j])
-                break;
-            return false;
-        }
+    protected void enterState(int i) {
         launcher.setVacuum(STATES[i][0]);
         launcher.setRelease(STATES[i][1]);
         launcher.setLock(STATES[i][2]);
         launcher.setLatch(STATES[i][3]);
         state = i;
-        return true;
     }
     
     public String stateDescribe(int i) {
@@ -73,21 +67,22 @@ public abstract class LauncherCommandBase extends CommandBase {
         } else if (i == 1) {
             return "evacuating launcher: 1";
         } else if (i == 2) {
-            return "launcher at rest: 2";
+            return "launcher resetting: 2";
         } else if (i == 3) {
-            return "latched: 3";
+            return "rest: 3";
         } else if (i == 4) {
-            return "charging: 4";
+            return "latched: 4";
         } else if (i == 5) {
-            return "charged: 5";
+            return "charging: 5";
         } else if (i == 6) {
-            return "firing: 6";
+            return "locked: 6";
         } else if (i == 7) {
-            return "launcher at rest, unlatched: 7";
+            return "firing: 7";
         } else if (i == 8) {
             return "aborting: 8";
         } else {
             return "error";
         }
+
     }
 }
