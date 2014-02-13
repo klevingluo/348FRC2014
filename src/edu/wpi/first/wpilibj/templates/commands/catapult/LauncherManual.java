@@ -64,7 +64,7 @@ public class LauncherManual extends LauncherCommandBase {
         
         SmartDashboard.putString("Launcher state:", stateDescribe(state));
         SmartDashboard.putString(" next Launcher state:", stateDescribe(TRANSITIONS[state][0]));
-        System.out.println("In " + state + ", Next " + TRANSITIONS[state][0] + ", Abort " + TRANSITIONS[state][1] + ", Time " + time.get() + ", Arm Down " + isLauncherDown);
+        //System.out.println("In " + state + ", Next " + TRANSITIONS[state][0] + ", Abort " + TRANSITIONS[state][1] + ", Time " + time.get() + ", Arm Down " + isLauncherDown);
         SmartDashboard.putNumber("shooting pressure:", RobotMap.pressureSensor.getVoltage());
     }
 
