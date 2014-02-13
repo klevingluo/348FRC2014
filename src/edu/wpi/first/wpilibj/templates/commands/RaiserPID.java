@@ -4,7 +4,7 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.templates.commands.catapult.LauncherCommandBase;
 
 /**
  *
@@ -14,16 +14,22 @@ public class RaiserPID extends CommandBase {
     
     public RaiserPID() {
         requires(raiser);
+        requires(roller);
+        raiser.enable();
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        raiser.enable();
+        raiser.setSetpoint(raiser.IDLE);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        raiser.setSetpoint(oi.leftStick.getAxis(Joystick.AxisType.kZ));
+        if (LauncherCommandBase.getState()== 6 || LauncherCommandBase.getState() == 7) {
+            raiser.setSetpoint(raiser.FIRE);
+        } else {
+            raiser.setSetpoint(raiser.IDLE);
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -33,12 +39,12 @@ public class RaiserPID extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        raiser.disable();
+
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-        raiser.disable();
+
     }
 }

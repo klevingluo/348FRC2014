@@ -16,8 +16,6 @@ public class teleopDefault extends CommandGroup{
     
     public teleopDefault() {
         addParallel(new TankDrive());
-        addParallel(new RollerManual());
-        addParallel(new RaiserManual());
         addParallel(new LauncherManual());
     }
 }

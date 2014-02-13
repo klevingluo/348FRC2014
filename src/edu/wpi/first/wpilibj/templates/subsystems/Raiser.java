@@ -4,13 +4,10 @@
  */
 package edu.wpi.first.wpilibj.templates.subsystems;
 
-import com.sun.squawk.util.MathUtils;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.templates.commands.RaiserPID;
-import edu.wpi.first.wpilibj.templates.commands.RaiserManual;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 /**
  *
@@ -18,13 +15,18 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  */
 public class Raiser extends PIDSubsystem {
   
+    public static final double DOWN = 2.35;
+    public static final double UP = 3.88;
+    public static final double IDLE = 3.45;
+    public static final double FIRE = 2.81;
+    
     SpeedController armRaiser = RobotMap.raiserMotor;
     public AnalogPotentiometer armAngle = RobotMap.raiserAngle;
     
     public Raiser() {
         
-        super("Raiser", 1.0, 0.0, 0.0);
-        setAbsoluteTolerance(0.2);
+        super("Raiser", 0.9, 0.06, 0.0);
+        setAbsoluteTolerance(0.15);
         getPIDController().setContinuous(true);
     }
     
@@ -45,7 +47,7 @@ public class Raiser extends PIDSubsystem {
     }
     
     public void initDefaultCommand() {
-        setDefaultCommand(new RaiserManual());
+        setDefaultCommand(new RaiserPID());
     }
 
     protected double returnPIDInput() {

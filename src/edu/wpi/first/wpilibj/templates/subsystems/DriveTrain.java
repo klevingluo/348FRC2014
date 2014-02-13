@@ -19,11 +19,11 @@ public class DriveTrain extends Subsystem {
     Talon rightDrive = RobotMap.rightDrive;
     
     public void driveLeft(double power) {
-        leftDrive.set(power);
+        leftDrive.set(-power);
     }
     
     public void driveRight(double power) {
-        rightDrive.set(power);
+        rightDrive.set(-power);
     }
    
     protected void initDefaultCommand() {

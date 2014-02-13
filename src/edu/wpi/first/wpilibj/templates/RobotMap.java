@@ -4,14 +4,12 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.camera.AxisCamera;
-import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -22,8 +20,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class RobotMap {
     
     // PWM Motor controllers, plugged into the digital sidecar
-    public static Talon leftDrive = new Talon(9);
-    public static Talon rightDrive = new Talon(8);
+    public static Talon leftDrive = new Talon(8);
+    public static Talon rightDrive = new Talon(9);
     public static Talon raiserMotor = new Talon(10);
     
     

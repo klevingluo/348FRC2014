@@ -44,7 +44,7 @@ public class Roller extends Subsystem {
     }
     
     protected void initDefaultCommand() {
-        setDefaultCommand(new RollerManual());
+        
     }
     
 }

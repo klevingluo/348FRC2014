@@ -61,6 +61,10 @@ public abstract class LauncherCommandBase extends CommandBase {
         state = i;
     }
     
+    public static int getState() {
+        return state;
+    }
+    
     public String stateDescribe(int i) {
         if (i == 0) {
             return "init: 0";

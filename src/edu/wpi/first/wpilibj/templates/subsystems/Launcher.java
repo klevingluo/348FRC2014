@@ -55,7 +55,7 @@ public class Launcher extends Subsystem {
         latchA.set(p);
         latchB.set(!p);
     }
-            
+                
     public void initDefaultCommand() {
         setDefaultCommand(new LauncherManual());
     }
