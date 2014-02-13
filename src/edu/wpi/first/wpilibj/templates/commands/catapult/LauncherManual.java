@@ -7,6 +7,7 @@ package edu.wpi.first.wpilibj.templates.commands.catapult;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.RobotMap;
+import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 
 /**
  *
@@ -51,6 +52,7 @@ public class LauncherManual extends LauncherCommandBase {
         } else if (state == 5 && time.get() > 0.2 && oi.advance.get() ) {    //charging cylinder to lock
             enterState(TRANSITIONS[5][0]);
             time.reset();
+            CommandBase.lights.shoot();
         } else if (state == 6 && time.get() > 0.2) {  // locked to firing
             enterState(TRANSITIONS[6][0]);
             time.reset();

@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.camera.AxisCamera;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DigitalOutput;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -38,6 +40,11 @@ public class RobotMap {
     public static DigitalInput catapultArm = new DigitalInput(6);
     public static DigitalInput pressureSwitch = new DigitalInput(4);
     
+    // Digital outputs
+    public static DigitalOutput lights1 = new DigitalOutput(1);
+    public static DigitalOutput lights2 = new DigitalOutput(2);
+    public static DigitalOutput lights3 = new DigitalOutput(3);
+    
     //Solenoid, plug into solenoid modules
     public static Solenoid vacuumA = new Solenoid(1);
     public static Solenoid vacuumB = new Solenoid(2);
@@ -50,6 +57,9 @@ public class RobotMap {
     // Camera
     public static AxisCamera camera = AxisCamera.getInstance("10.3.48.11");
     public static NetworkTable nettab = NetworkTable.getTable("");
+    
+    // Driver Station
+    public static DriverStation station = DriverStation.getInstance();
     
     // diagnostic values
     public static void init() {
