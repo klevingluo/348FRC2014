@@ -15,8 +15,6 @@ import edu.wpi.first.wpilibj.templates.commands.CommandBase;
  */
 public class LauncherManual extends LauncherCommandBase {
     
-    private Timer time;
-    
     public LauncherManual() {
         requires(launcher);
     }
@@ -24,6 +22,7 @@ public class LauncherManual extends LauncherCommandBase {
     protected void initialize() {
         enterState(4);
         time = new Timer();
+        time.reset();
         time.start();
     }
 
