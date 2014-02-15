@@ -39,7 +39,7 @@ public class LauncherManual extends LauncherCommandBase {
             if (isLauncherDown) {
                 enterState(TRANSITIONS[2][0]);           // Transitions is an array of state movements [2][0] is the forwards transition from state 2 and [2][1] is the backwards transition
             } else if (time.get() > 3) {
-                enterState(TRANSITIONS[2][1]);
+                enterState(TRANSITIONS[2][0]);
             }
             time.reset();
         } else if (state == 3 && time.get() > 0.1) {    // at rest

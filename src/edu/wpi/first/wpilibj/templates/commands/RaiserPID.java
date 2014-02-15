@@ -25,10 +25,19 @@ public class RaiserPID extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (LauncherCommandBase.getState()== 6 || LauncherCommandBase.getState() == 7) {
-            raiser.setSetpoint(raiser.FIRE);
-        } else {
-            raiser.setSetpoint(raiser.IDLE);
+        switch(LauncherCommandBase.getState())
+        {
+            // firing or resetting states
+            case 6:
+            case 7:
+            case 1:
+            case 2:
+            case 3:
+                raiser.setSetpoint(raiser.FIRE);
+                break;
+            default:
+                raiser.setSetpoint(raiser.IDLE);
+                break;
         }
     }
 

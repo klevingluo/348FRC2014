@@ -15,17 +15,17 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  */
 public class Raiser extends PIDSubsystem {
   
-    public static final double DOWN = 2.35;
-    public static final double UP = 3.88;
-    public static final double IDLE = 3.45;
-    public static final double FIRE = 2.81;
+    public static final double DOWN = 4.57;
+    public static final double UP = 3.07;
+    public static final double IDLE = 3.38;
+    public static final double FIRE = 3.95; // 2.81 is ideal but we can't get there without an I gain
     
     SpeedController armRaiser = RobotMap.raiserMotor;
     public AnalogPotentiometer armAngle = RobotMap.raiserAngle;
     
     public Raiser() {
         
-        super("Raiser", 0.9, 0.06, 0.0);
+        super("Raiser", -1.2, 0.0, -0.1);
         setAbsoluteTolerance(0.15);
         getPIDController().setContinuous(true);
     }
