@@ -14,6 +14,7 @@ public class OI {
     // the two joysticks
     public Joystick leftStick = new Joystick(2);
     public Joystick rightStick = new Joystick(1);
+    public Joystick coDriver = new Joystick(3);
     
     
     // rolls the intake rollers to take in a ball

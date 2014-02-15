@@ -55,5 +55,8 @@ public class RobotMap {
     public static void init() {
         LiveWindow.addActuator("Raiser", "pid", CommandBase.raiser.getPIDController());
         LiveWindow.addSensor("Raiser", "Angle", CommandBase.raiser.armAngle);
+        lights1.set(true);
+        lights2.set(true);
+        lights3.set(true);
     }
 }
