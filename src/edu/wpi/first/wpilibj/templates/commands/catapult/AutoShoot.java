@@ -1,21 +1,22 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package edu.wpi.first.wpilibj.templates.commands.catapult;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.RobotMap;
-import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 
 /**
  *
- * @author kluo
+ * @author programming
  */
-public class LauncherManual extends LauncherCommandBase {
+public class AutoShoot extends LauncherCommandBase {
+
     
-    public LauncherManual() {
+    public AutoShoot() {
         requires(launcher);
     }
 
@@ -31,33 +32,29 @@ public class LauncherManual extends LauncherCommandBase {
         if (state == 0) {
             enterState(TRANSITIONS[0][0]);              // init
             time.reset();
-        } else if (state == 1 && time.get() > 1.0) {    // evacuating
+        } else if (state == 1 && time.get() > 0.1) {    // evacuating
             enterState(TRANSITIONS[1][0]);
             time.reset();
         } else if (state == 2) {                        // resetting launcher
-            if (isLauncherDown || time.get() > 2) {
+            if (isLauncherDown) {
                 enterState(TRANSITIONS[2][0]);           // Transitions is an array of state movements [2][0] is the forwards transition from state 2 and [2][1] is the backwards transition
-                if (RobotMap.forward) {
-                    CommandBase.lights.forwards();
-                } else {
-                    CommandBase.lights.backwards();
-                }
-                time.reset();
+            } else if (time.get() > 3) {
+                enterState(TRANSITIONS[2][0]);
             }
-        } else if (state == 3 && time.get() > 0.1) {    // at rest to latched
+            time.reset();
+        } else if (state == 3 && time.get() > 0.1) {    // at rest
             enterState(TRANSITIONS[3][0]);
             time.reset();
         } else if (state == 4 && time.get() > 0.2) {    // latched to charging
             enterState(TRANSITIONS[4][0]);
             time.reset();
-        } else if (state == 5 && time.get() > 0.2 && oi.advance.get() ) {    //charging cylinder to lock
+        } else if (state == 5 && time.get() > 0.2) {    //charging cylinder to lock
             enterState(TRANSITIONS[5][0]);
             time.reset();
-            CommandBase.lights.shoot();
         } else if (state == 6 && time.get() > 0.2) {  // locked to firing
             enterState(TRANSITIONS[6][0]);
             time.reset();
-        } else if (state == 7 && time.get() > 0.4) {        // firing
+        } else if (state == 7 && time.get() > 0.2) {        // firing
             enterState(TRANSITIONS[7][0]);
             time.reset();
         } else if (state == 8) {                        //aborting
@@ -72,7 +69,7 @@ public class LauncherManual extends LauncherCommandBase {
     }
 
     protected boolean isFinished() {
-        return false;
+        return state==1;
     }
 
     protected void end() {

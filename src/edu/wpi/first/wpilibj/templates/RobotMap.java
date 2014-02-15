@@ -21,6 +21,9 @@ import edu.wpi.first.wpilibj.Solenoid;
  */
 public class RobotMap {
     
+    // if the robot is going forward
+    public static boolean forwards = true;
+    
     //whether or not the robot is moving forwards
     public static boolean forward = true;
     
