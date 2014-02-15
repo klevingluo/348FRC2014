@@ -16,6 +16,7 @@ public class ToggleCompressor extends CommandBase {
         } else {
             airCompressor.start();
         }
+        CommandBase.lights.setAlliance();
     }
 
     protected void execute() {

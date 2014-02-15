@@ -21,10 +21,6 @@ public class OI {
     // rolls the intake rollers backwards to spit out a ball
     public JoystickButton rollReverse = new JoystickButton(leftStick, 11);
     // raises the arms
-
-    
-    //moves to the previous state of shooting
-    //public JoystickButton abort = new JoystickButton(leftStick, 4);
     
     // turns the compressor on/off
     public JoystickButton toggle = new JoystickButton(rightStick, 10);

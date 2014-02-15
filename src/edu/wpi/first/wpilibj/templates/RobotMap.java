@@ -21,11 +21,13 @@ import edu.wpi.first.wpilibj.Solenoid;
  */
 public class RobotMap {
     
+    //whether or not the robot is moving forwards
+    public static boolean forward = true;
+    
     // PWM Motor controllers, plugged into the digital sidecar
     public static Talon leftDrive = new Talon(8);
     public static Talon rightDrive = new Talon(9);
     public static Talon raiserMotor = new Talon(10);
-    
     
     // Relays, plug into relay sections on digital sidecar
     public static Relay rightRoller = new Relay(2);
@@ -41,9 +43,9 @@ public class RobotMap {
     public static DigitalInput pressureSwitch = new DigitalInput(4);
     
     // Digital outputs
-    public static DigitalOutput lights1 = new DigitalOutput(1);
-    public static DigitalOutput lights2 = new DigitalOutput(2);
-    public static DigitalOutput lights3 = new DigitalOutput(3);
+    public static DigitalOutput lights1 = new DigitalOutput(12);
+    public static DigitalOutput lights2 = new DigitalOutput(13);
+    public static DigitalOutput lights3 = new DigitalOutput(14);
     
     //Solenoid, plug into solenoid modules
     public static Solenoid vacuumA = new Solenoid(1);
@@ -65,5 +67,8 @@ public class RobotMap {
     public static void init() {
         LiveWindow.addActuator("Raiser", "pid", CommandBase.raiser.getPIDController());
         LiveWindow.addSensor("Raiser", "Angle", CommandBase.raiser.armAngle);
+        lights1.set(true);
+        lights2.set(true);
+        lights3.set(true);
     }
 }

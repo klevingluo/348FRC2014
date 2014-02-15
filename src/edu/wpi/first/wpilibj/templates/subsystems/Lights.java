@@ -20,26 +20,30 @@ public class Lights extends Subsystem {
     DigitalOutput[] signal = {RobotMap.lights1, RobotMap.lights2, RobotMap.lights3};
     
     public Lights() {
-        if (RobotMap.station.getAlliance() == DriverStation.Alliance.kBlue) {
-            signal[0].set(true);
-        } else {
+
+    }
+    
+    public void setAlliance() {
+        if (RobotMap.station.getAlliance() == DriverStation.Alliance.kRed) {
             signal[0].set(false);
+        } else {
+            signal[0].set(true);
         }
     }
     
     public void forwards() {
-        signal[1].set(true);
-        signal[2].set(false);
-    }
-    
-    public void backwards() {
         signal[1].set(false);
         signal[2].set(true);
     }
     
-    public void shoot() {
+    public void backwards() {
         signal[1].set(true);
-        signal[2].set(true);
+        signal[2].set(false);
+    }
+    
+    public void shoot() {
+        signal[1].set(false);
+        signal[2].set(false);
     }
 
     protected void initDefaultCommand() {
