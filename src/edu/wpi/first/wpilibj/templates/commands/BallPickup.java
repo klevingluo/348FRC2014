@@ -15,11 +15,11 @@ public class BallPickup extends CommandBase {
     public BallPickup() {
         requires(roller);
         requires(raiser);
-        raiser.enable();
     }
     
     protected void initialize() {
         raiser.setSetpoint(raiser.DOWN);
+        raiser.enable();
     }
 
     protected void execute() {

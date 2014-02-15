@@ -14,12 +14,12 @@ public class BallEject extends CommandBase{
     
     public BallEject() {
         requires(roller);
-        requires(raiser);
-        raiser.enable();
+        requires(raiser);        
     }
 
     protected void initialize() {
        raiser.setSetpoint(raiser.UP);
+       raiser.enable();
     }
 
     protected void execute() {

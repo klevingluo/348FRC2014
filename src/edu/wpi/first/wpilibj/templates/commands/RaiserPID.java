@@ -15,12 +15,12 @@ public class RaiserPID extends CommandBase {
     public RaiserPID() {
         requires(raiser);
         requires(roller);
-        raiser.enable();
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
         raiser.setSetpoint(raiser.IDLE);
+        raiser.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run

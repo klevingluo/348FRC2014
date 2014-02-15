@@ -16,21 +16,6 @@ public class OI {
     public Joystick rightStick = new Joystick(1);
     public Joystick coDriver = new Joystick(3);
     
-    
-    // rolls the intake rollers to take in a ball
-    public JoystickButton roll = new JoystickButton(leftStick, 10);
-    // rolls the intake rollers backwards to spit out a ball
-    public JoystickButton rollReverse = new JoystickButton(leftStick, 11);
-    // raises the arms
-
-    
-    //moves to the previous state of shooting
-    //public JoystickButton abort = new JoystickButton(leftStick, 4);
-    
-    // turns the compressor on/off
-
-    public JoystickButton toggle = new JoystickButton(rightStick, 10);
-
     public JoystickButton stopComp = new JoystickButton(coDriver, 11);
     public JoystickButton dance = new JoystickButton(coDriver, 1);
     public JoystickButton startComp = new JoystickButton(coDriver, 12);

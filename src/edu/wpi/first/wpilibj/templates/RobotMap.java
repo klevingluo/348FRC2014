@@ -29,7 +29,6 @@ public class RobotMap {
     public static Talon rightDrive = new Talon(9);
     public static Talon raiserMotor = new Talon(10);
     
-    
     // Relays, plug into relay sections on digital sidecar
     public static Relay rightRoller = new Relay(2);
     public static Relay leftRoller = new Relay(3);

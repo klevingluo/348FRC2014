@@ -2,6 +2,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.subsystems.AirCompressor;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.subsystems.Raiser;
@@ -35,7 +36,7 @@ public abstract class CommandBase extends Command {
         // news. Don't move it.
         oi = new OI();
         // Show what command your subsystem is running on the SmartDashboard
-        //SmartDashboard.putData(exampleSubsystem);
+        SmartDashboard.putData(raiser);
     }
 
     public CommandBase(String name) {
