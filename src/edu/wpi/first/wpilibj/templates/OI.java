@@ -27,7 +27,12 @@ public class OI {
     //public JoystickButton abort = new JoystickButton(leftStick, 4);
     
     // turns the compressor on/off
+
     public JoystickButton toggle = new JoystickButton(rightStick, 10);
+
+    public JoystickButton stopComp = new JoystickButton(coDriver, 11);
+    public JoystickButton dance = new JoystickButton(coDriver, 1);
+    public JoystickButton startComp = new JoystickButton(coDriver, 12);
     
     // while pressed, the robot drives backwards
     public JoystickButton reverseDrive = new JoystickButton(leftStick, 4);
@@ -41,11 +46,13 @@ public class OI {
     public JoystickButton advance = new JoystickButton(rightStick, 1);
     
     public OI() {
-        toggle.whenReleased(new ToggleCompressor());
+        startComp.whenPressed(new CompressorON());
+        stopComp.whenPressed(new CompressorOFF());
         reverseDrive.whenPressed(new ReverseTankDrive());
         normalDrive.whenPressed(new TankDrive());
         pick.whileHeld(new BallPickup());
         eject.whileHeld(new BallEject());
+        dance.whileHeld(new CrazyDance());
     }
 }
 
