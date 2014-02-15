@@ -5,6 +5,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
  *
@@ -18,6 +19,8 @@ public class ReverseTankDrive extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        CommandBase.lights.backwards();
+        RobotMap.forwards = false;
     }
 
     // Called repeatedly when this Command is scheduled to srun

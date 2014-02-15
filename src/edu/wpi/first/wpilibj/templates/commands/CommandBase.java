@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.subsystems.Raiser;
 import edu.wpi.first.wpilibj.templates.subsystems.Roller;
 import edu.wpi.first.wpilibj.templates.subsystems.Launcher;
+import edu.wpi.first.wpilibj.templates.subsystems.Lights;
 
 
 /**
@@ -24,6 +25,7 @@ public abstract class CommandBase extends Command {
     public static Roller roller = new Roller();
     public static Launcher launcher = new Launcher();
     public static AirCompressor airCompressor = new AirCompressor();
+    public static Lights lights = new Lights();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

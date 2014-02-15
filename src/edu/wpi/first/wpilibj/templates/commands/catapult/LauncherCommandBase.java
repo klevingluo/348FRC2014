@@ -5,6 +5,7 @@
 package edu.wpi.first.wpilibj.templates.commands.catapult;
 
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
+import edu.wpi.first.wpilibj.Timer;
 
 /**
  *
@@ -14,6 +15,7 @@ public abstract class LauncherCommandBase extends CommandBase {
     
     protected static int state = 0;
     
+    Timer time = new Timer();
     /**
      * these are the solenoid positions for all the states 
      * the solenoids are in this order: vacuum, launcher pressure release, launcher pressure lock, latch

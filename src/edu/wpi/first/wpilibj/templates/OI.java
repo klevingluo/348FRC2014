@@ -36,9 +36,9 @@ public class OI {
     public JoystickButton startComp = new JoystickButton(coDriver, 12);
     
     // while pressed, the robot drives backwards
-    public JoystickButton reverseDrive = new JoystickButton(leftStick, 4);
+    public JoystickButton reverseDrive = new JoystickButton(leftStick, 5);
     // while pressed, the robot drives backwards
-    public JoystickButton normalDrive = new JoystickButton(rightStick, 5);
+    public JoystickButton normalDrive = new JoystickButton(rightStick, 4);
     // lowers arms and picks up
     public JoystickButton pick = new JoystickButton(leftStick, 3);
     // raises arms and ejects
