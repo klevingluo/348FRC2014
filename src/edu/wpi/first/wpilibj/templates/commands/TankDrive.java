@@ -21,7 +21,7 @@ public class TankDrive extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         CommandBase.lights.forwards();
-        RobotMap.forward = true;
+        RobotMap.forwards = true;
     }
 
     // Called repeatedly when this Command is scheduled to srun
