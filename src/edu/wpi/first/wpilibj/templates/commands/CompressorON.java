@@ -17,6 +17,7 @@ public class CompressorON extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         airCompressor.start();
+        lights.setAlliance();
     }
 
     // Called repeatedly when this Command is scheduled to run
