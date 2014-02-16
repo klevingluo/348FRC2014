@@ -35,7 +35,7 @@ public class RaiserPID extends CommandBase {
             case 3:
                 raiser.setSetpoint(raiser.FIRE);
                 CommandBase.roller.rollLeft();
-                CommandBase.roller.rollLeft();
+                CommandBase.roller.rollRight();
                 break;
             default:
                 raiser.setSetpoint(raiser.IDLE);
