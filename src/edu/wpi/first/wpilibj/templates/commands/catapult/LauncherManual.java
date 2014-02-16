@@ -37,7 +37,7 @@ public class LauncherManual extends LauncherCommandBase {
         } else if (state == 2) {                        // resetting launcher
             if (isLauncherDown || time.get() > 2) {
                 enterState(TRANSITIONS[2][0]);           // Transitions is an array of state movements [2][0] is the forwards transition from state 2 and [2][1] is the backwards transition
-                if (RobotMap.forward) {
+                if (RobotMap.forwards) {
                     CommandBase.lights.forwards();
                 } else {
                     CommandBase.lights.backwards();

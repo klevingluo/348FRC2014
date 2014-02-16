@@ -21,9 +21,9 @@ import edu.wpi.first.wpilibj.Solenoid;
  */
 public class RobotMap {
     
-    //whether or not the robot is moving forwards
-    public static boolean forward = true;
-    
+    // if the robot is going forward
+    public static boolean forwards = true;
+
     // PWM Motor controllers, plugged into the digital sidecar
     public static Talon leftDrive = new Talon(8);
     public static Talon rightDrive = new Talon(9);

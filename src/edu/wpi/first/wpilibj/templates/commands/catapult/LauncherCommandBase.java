@@ -4,6 +4,7 @@
  */
 package edu.wpi.first.wpilibj.templates.commands.catapult;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import edu.wpi.first.wpilibj.Timer;
 
@@ -13,6 +14,7 @@ import edu.wpi.first.wpilibj.Timer;
  */
 public abstract class LauncherCommandBase extends CommandBase {
     
+    Timer time = new Timer();
     protected static int state = 0;
     
     Timer time = new Timer();
