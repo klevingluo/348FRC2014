@@ -31,17 +31,18 @@ public class RobotTemplate extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+        CommandBase.lights.setAlliance();
         // instantiate the command used for the autonomous period
         //autonomousCommand = new ();
-        autonomousCommand = new AutoCommand();
         // Initialize all subsystems
         RobotMap.init();
         CommandBase.init();
         SmartDashboard.putData(Scheduler.getInstance());
+        autonomousCommand = new AutoCommand(); 
     }
 
     public void autonomousInit() {
-        // schedule the autonomous command (example)
+        // schedule the autonomous command (example)       
         autonomousCommand.start();
         CommandBase.lights.setAlliance();
     }
@@ -61,6 +62,7 @@ public class RobotTemplate extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         autonomousCommand.cancel();
+        CommandBase.lights.setAlliance();
     }
 
     /**

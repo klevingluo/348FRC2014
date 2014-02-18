@@ -20,10 +20,13 @@ public class OI {
     public JoystickButton dance = new JoystickButton(coDriver, 1);
     public JoystickButton startComp = new JoystickButton(coDriver, 12);
     
+    public JoystickButton waiter = new JoystickButton(coDriver, 7);
+    public JoystickButton aimer = new JoystickButton(coDriver, 8);
+    
     // while pressed, the robot drives backwards
-    public JoystickButton reverseDrive = new JoystickButton(leftStick, 5);
+    public JoystickButton reverseDrive = new JoystickButton(leftStick, 4);
     // while pressed, the robot drives backwards
-    public JoystickButton normalDrive = new JoystickButton(rightStick, 4);
+    public JoystickButton normalDrive = new JoystickButton(rightStick, 5);
     // lowers arms and picks up
     public JoystickButton pick = new JoystickButton(leftStick, 3);
     // raises arms and ejects
@@ -39,6 +42,7 @@ public class OI {
         pick.whileHeld(new BallPickup());
         eject.whileHeld(new BallEject());
         dance.whileHeld(new CrazyDance());
+        waiter.whileHeld(new Wait());
+        aimer.whileHeld(new Aim());
     }
 }
-

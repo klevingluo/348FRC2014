@@ -13,10 +13,9 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  *
  * @author programming
  */
-public class AutoShoot extends LauncherCommandBase {
-
+public class Reload extends LauncherCommandBase {
     
-    public AutoShoot() {
+    public Reload() {
         requires(launcher);
         requires(driveTrain);
     }
@@ -70,7 +69,7 @@ public class AutoShoot extends LauncherCommandBase {
     }
 
     protected boolean isFinished() {
-        return state==1;
+        return state==4;
     }
 
     protected void end() {

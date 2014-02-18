@@ -25,6 +25,7 @@ public class DriveForwards extends CommandBase {
             
     protected void initialize() {
         time.start();
+        lights.forwards();
     }
 
     protected void execute() {

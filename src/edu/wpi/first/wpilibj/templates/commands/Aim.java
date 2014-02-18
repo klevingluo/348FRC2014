@@ -22,32 +22,33 @@ public class Aim extends CommandBase {
     Timer time = new Timer();
     
     public Aim() {
-        requires(driveTrain);
+        //requires(driveTrain);
     }
     
     protected void initialize() {
-
+        System.out.println("aiming started");
     }
 
     protected void execute() {
-        try{
-            corners = (NumberArray) RobotMap.nettab.getValue("BFR_COORDINATES", corners);
+        try {
+            RobotMap.TeleVision.retrieveValue("BFR_COORDINATES", corners);
         } catch(Exception e) {
-            System.out.println("error");
+            
         }
-        SmartDashboard.putNumber("corner value", corners.get(2));
-        System.out.println(corners.get(2));
+        SmartDashboard.putNumber("corner value", corners.get(0));
+        System.out.println("corner: " + corners.get(0));
     }
 
     protected boolean isFinished() {
-        return time.get() > 3;
+        return false;
     }
 
     protected void end() {
-        
+        System.out.println("aiming ended");
     }
 
     protected void interrupted() {
+        System.out.println("aiming ended");
         
     }
     

@@ -58,7 +58,8 @@ public class RobotMap {
     
     // Camera
     public static AxisCamera camera = AxisCamera.getInstance("10.3.48.11");
-    public static NetworkTable nettab = NetworkTable.getTable("");
+    public static NetworkTable TeleVision = NetworkTable.getTable("Teleop");
+    public static NetworkTable AutoVision = NetworkTable.getTable("Auto");
     
     // Driver Station
     public static DriverStation station = DriverStation.getInstance();
